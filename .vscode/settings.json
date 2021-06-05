@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "editor.suggest.showFiles": false,
+    "workbench.preferredLightColorTheme": "Default Dark+",
+    "workbench.preferredHighContrastColorTheme": "Abyss"
+}
