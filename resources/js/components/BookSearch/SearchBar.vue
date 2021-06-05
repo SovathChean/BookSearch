@@ -19,7 +19,7 @@
           <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
           <div class="list-txt">
             <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
+            <div class="txt">Page number: 100</div>
           </div>
           <div class="des">
             Before taking Microsoft’s AZ-104 exam, please read the pages at the
