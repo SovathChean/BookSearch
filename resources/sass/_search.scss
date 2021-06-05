@@ -1,0 +1,59 @@
+.search
+{
+    .search-bar
+    {
+        box-shadow: 1px 11px 5px -6px rgba(0,0,0,0.11);
+    }
+    .search-results
+    {
+        margin-top: 30px;
+        margin-bottom: 30px;;
+        background-color: rgb(251, 251, 251);
+        padding: 10px;
+        .total
+        {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0px;
+            color: rgb(145, 157, 171);
+        }
+        .item
+        {
+            padding: 10px;
+            margin: 10px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 1px 11px 5px -6px rgba(0,0,0,0.11);;
+            .title
+            {
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .list-txt
+            {
+                display: flex;
+                justify-content: start;
+                .txt
+                {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: rgb(145, 157, 171);
+                    margin-right: 15px;
+                }
+            }
+            
+            .des
+            {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+    .pagination
+    {
+        padding: 20px !important;
+        background-color: #fff;
+    }
+}
