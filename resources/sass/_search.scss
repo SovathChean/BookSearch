@@ -6,6 +6,8 @@
     }
     .search-results
     {
+        position: relative;
+        z-index: 10;
         margin-top: 30px;
         margin-bottom: 30px;;
         background-color: rgb(251, 251, 251);
@@ -25,7 +27,7 @@
             margin-top: 20px;
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 1px 11px 5px -6px rgba(0,0,0,0.11);;
+            box-shadow: 1px 11px 5px -6px rgba(0,0,0,0.11);
             .title
             {
                 font-size: 20px;

@@ -30,128 +30,8 @@
             Object replication for block blobs Use the Azure
           </div>
         </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
-        <div class="item">
-          <div class="title">Required Reading for Microsoft AZ-104 Exam</div>
-          <div class="list-txt">
-            <div class="txt">Author: Sovath</div>
-            <div class="txt">Author: Sovath</div>
-          </div>
-          <div class="des">
-            Before taking Microsoft’s AZ-104 exam, please read the pages at the
-            following links because these specific topics were not covered
-            anywhere else in this learning path: Administrative units in Azure
-            Active Directory Bulk create users in Azure Active Directory Create
-            a management group Assign share-level permissions to an identity
-            Object replication for block blobs Use the Azure
-          </div>
-        </div>
       </div>
-      <nav aria-label="Page navigation example">
+      <!-- <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
@@ -169,7 +49,13 @@
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  
+}
+</script>
