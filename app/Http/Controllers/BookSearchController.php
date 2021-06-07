@@ -20,12 +20,12 @@ class BookSearchController extends Controller
         $input = strtolower($data['query']);
         $books = $this->ranking($input);
         $time_end = microtime(true);
-        $total_time = ($time_end - $time_start) / 1000000;
+        $total_time = ($time_end - $time_start) / 1000;
        
         return response()->json([
             'data'=> $books,
             'total' => count($books),
-            'time_spend' => $total_time
+            'time_spend' => number_format($total_time, 4)
         ]);
     }
 

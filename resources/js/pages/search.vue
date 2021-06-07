@@ -1,7 +1,6 @@
 <template>
     <div class="body-layout">
         <search-bar></search-bar>
-        <results></results>
     </div>
 </template>
 <script>

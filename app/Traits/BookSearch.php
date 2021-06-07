@@ -113,8 +113,12 @@ trait BookSearch
         foreach ($words as $word => $val) {
             $simi = [];
             $docs =   DB::table('tf_idfs')->where('term', 'LIKE',  '%' . $word . '%')
-                ->get()
-                ->groupBy('doc')->toArray();
+                                            ->get()
+                                            ->groupBy('doc')->toArray();                    
+
+        }
+        if(isset($docs))
+        {
             foreach ($docs as $doc) {
                 $wq = 0;
                 $doc_num = '';
@@ -122,6 +126,7 @@ trait BookSearch
                 $total_wt = 0;
                 $total_wq = 0;
                 $simi = [];
+               
                 foreach ($doc as $d) {
                     $wq = 0;
                     if (isset($totalFreq[$word])) {
@@ -134,10 +139,11 @@ trait BookSearch
                     $doc_num = $d->doc;
                 }
                 $simi[$doc_num] = $upper / sqrt($total_wt) * sqrt($total_wq);
-
+    
                 $cosine_simi[] = $simi;
             }
         }
+       
         return $cosine_simi;
     }
     public function ranking($input)
