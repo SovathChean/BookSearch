@@ -22,7 +22,7 @@ trait BookSearch
         // 'insofar', 'instead', 'into', 'inward', 'is', 'isn\'t', 'it', 'it\'d', 'it\'ll', 'its', 'it\'s', 'itself', 
         // 'i\'ve', 'j', 'just', 'k', 'keep', 'keeps', 'kept', 'know', 'known', 'knows', 'l', 'last', 'lately', 'later', 'latter', 'latterly', 'least', 'less', 'lest', 'let', 'let\'s', 'like', 'liked', 'likely', 'likewise', 'little', 'look', 'looking', 'looks', 'low', 'lower', 'ltd', 'm', 'made', 'mainly', 'make', 'makes', 'many', 'may', 'maybe', 'mayn\'t', 'me', 'mean', 'meantime', 'meanwhile', 'merely', 'might', 'mightn\'t', 'mine', 'minus', 'miss', 'more', 'moreover', 'most', 'mostly', 'mr', 'mrs', 'much', 'must', 'mustn\'t', 'my', 'myself', 'n', 'name', 'namely', 'nd', 'near', 'nearly', 'necessary', 'need', 'needn\'t', 'needs', 'neither', 'never', 'neverf', 'neverless', 'nevertheless', 'new', 'next', 'nine', 'ninety', 'no', 'nobody', 'non', 'none', 'nonetheless', 'noone', 'no-one', 'nor', 'normally', 'not', 'nothing', 'notwithstanding', 'novel', 'now', 'nowhere', 'o', 'obviously', 'of', 'off', 'often', 'oh', 'ok', 'okay', 'old', 'on', 'once', 'one', 'ones', 'one\'s', 'only', 'onto', 'opposite', 'or', 'other', 'others', 'otherwise', 'ought', 'oughtn\'t', 'our', 'ours', 'ourselves', 'out', 'outside', 'over', 'overall', 'own', 'p', 'particular', 'particularly', 'past', 'per', 'perhaps', 'placed', 'please', 'plus', 'possible', 'presumably', 'probably', 'provided', 'provides', 'q', 'que', 'quite', 'qv', 'r', 'rather', 'rd', 're', 'really', 'reasonably', 'recent', 'recently', 'regarding', 'regardless', 'regards', 'relatively', 'respectively', 'right', 'round', 's', 'said', 'same', 'saw', 'say', 'saying', 'says', 'second', 'secondly', 'see', 'seeing', 'seem', 'seemed', 'seeming', 'seems', 'seen', 'self', 'selves', 'sensible', 'sent', 'serious', 'seriously', 'seven', 'several', 'shall', 'shan\'t', 'she', 'she\'d', 'she\'ll', 'she\'s', 'should', 'shouldn\'t', 'since', 'six', 'so', 'some', 'somebody', 'someday', 'somehow', 'someone', 'something', 'sometime', 'sometimes', 'somewhat', 'somewhere', 'soon', 'sorry', 'specified', 'specify', 'specifying', 'still', 'sub', 'such', 'sup', 'sure', 't', 'take', 'taken', 'taking', 'tell', 'tends', 'th', 'than', 'thank', 'thanks', 'thanx', 'that', 'that\'ll', 'thats', 'that\'s', 'that\'ve', 'the', 'their', 'theirs', 'them', 'themselves', 'then', 'thence', 'there', 'thereafter', 'thereby', 'there\'d', 'therefore', 'therein', 'there\'ll', 'there\'re', 'theres', 'there\'s', 'thereupon', 'there\'ve', 'these', 'they', 'they\'d', 'they\'ll', 'they\'re', 'they\'ve', 'thing', 'things', 'think', 'third', 'thirty', 'this', 'thorough', 'thoroughly', 'those', 'though', 'three', 'through', 'throughout', 'thru', 'thus', 'till', 'to', 'together', 'too', 'took', 'toward', 'towards', 'tried', 'tries', 'truly', 'try', 'trying', 't\'s', 'twice', 'two', 'u', 'un', 'under', 'underneath', 'undoing', 'unfortunately', 'unless', 'unlike', 'unlikely', 'until', 'unto', 'up', 'upon', 'upwards', 'us', 'use', 'used', 'useful', 'uses', 'using', 'usually', 'v', 'value', 'various', 'versus', 'very', 'via', 'viz', 'vs', 'w', 'want', 'wants', 'was', 'wasn\'t', 'way', 'we', 'we\'d', 'welcome', 'well', 'we\'ll', 'went', 'were', 'we\'re', 'weren\'t', 'we\'ve', 'what', 'whatever', 'what\'ll', 'what\'s', 'what\'ve', 'when', 'whence', 'whenever', 'where', 'whereafter', 'whereas', 'whereby', 'wherein', 'where\'s', 'whereupon', 'wherever', 'whether', 'which', 'whichever', 'while', 'whilst', 'whither', 'who', 'who\'d', 'whoever', 'whole', 'who\'ll', 'whom', 'whomever', 'who\'s', 'whose', 'why', 'will', 'willing', 'wish', 'with', 'within', 'without', 'wonder', 'won\'t', 'would', 'wouldn\'t', 'x', 'y', 'yes', 'yet', 'you', 'you\'d', 'you\'ll', 'your', 'you\'re', 'yours', 'yourself', 'yourselves', 'you\'ve', 'z', 'zero');
         $stopWords = [
-            "i", "-", "--", "me", "my", "myself", 'i', 'i\'d', 'ie', 'if', 'i\'ll', 'i\'m', "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
+            "i", "--", '-', "me", "my", "myself", 'i', 'i\'d', 'ie', 'if', 'i\'ll', 'i\'m', "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
             "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they",
             "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those",
             "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does",
@@ -62,6 +62,7 @@ trait BookSearch
 
             $title = strtolower($title . ' ' . $word['title']);
         }
+
         return  $this->wordCount($title);
     }
     public function idf($input)
@@ -110,41 +111,82 @@ trait BookSearch
         $words = $this->wordCount($input);
         $totalFreq = $this->totalFreq($books);
         $cosine_simi = [];
+        $group_word = $this->relevent_doc($words);
+        $total_wq =  $this->total_query_weight($words, $totalFreq);
+
+        foreach ($group_word as $docs) {
+            $cosine_simi[] = $this->calculate_cosine($docs, $total_wq, $totalFreq);
+        }
+
+
+        return $cosine_simi;
+    }
+    public function calculate_cosine($docs, $total_wq, $totalFreq)
+    {
+        $wq = 0;
+        $doc_num = '';
+        $upper = 0;
+        $total_wt = 0;
+        $simi = [];
+        $val = 1;
+
+        foreach ($docs as $d) {
+            $wq = 0;
+            $wt = $d->tf * $d->idf;
+            if (isset($totalFreq[$d->term])) {
+
+                $wq = (1 + log($val)) * log((count($totalFreq) / $totalFreq[$d->term]), 2);
+            }
+
+            $total_wt = $total_wt + pow($wt, 2);
+            $upper = $upper + ($wt * $wq);
+            $doc_num = $d->doc;
+        }
+        if ((sqrt($total_wt) * sqrt($total_wq)) != 0) {
+            $simi[$doc_num] = $upper / (sqrt($total_wt) * sqrt($total_wq));
+        }
+        return $simi;
+    }
+    public function relevent_doc($words)
+    {
+        $document = [];
+
         foreach ($words as $word => $val) {
             $simi = [];
-            $docs =   DB::table('tf_idfs')->where('term', 'LIKE',  '%' . $word . '%')
-                                            ->get()
-                                            ->groupBy('doc')->toArray();                    
+            $docs =   DB::table('tf_idfs')->where('term', $word)
+                ->get()->toArray();
+            $document = array_merge($document, $docs);
+        }
 
-        }
-        if(isset($docs))
-        {
-            foreach ($docs as $doc) {
-                $wq = 0;
-                $doc_num = '';
-                $upper = 0;
-                $total_wt = 0;
-                $total_wq = 0;
-                $simi = [];
-               
-                foreach ($doc as $d) {
-                    $wq = 0;
-                    if (isset($totalFreq[$word])) {
-                        $wq = (1 + log($val)) * log(count($totalFreq) / $totalFreq[$word], 2);
-                    }
-                    $wt = $d->tf * $d->idf;
-                    $total_wt = $total_wt + $wt;
-                    $total_wq = $total_wq + $wq;
-                    $upper = $upper + ($wt * $wq);
-                    $doc_num = $d->doc;
-                }
-                $simi[$doc_num] = $upper / sqrt($total_wt) * sqrt($total_wq);
-    
-                $cosine_simi[] = $simi;
+        $group_word = $this->group_by('doc', $document);
+
+        return $group_word;
+    }
+    public function total_query_weight($words, $totalFreq)
+    {
+        $total_wq = 0;
+        foreach ($words as $word => $val) {
+            $wq = 0;
+
+            if (isset($totalFreq[$word])) {
+
+                $wq = (1 + log($val)) * log((count($totalFreq) / $totalFreq[$word]), 2);
             }
+
+            $total_wq = $total_wq + pow($wq, 2);
         }
-       
-        return $cosine_simi;
+
+        return $total_wq;
+    }
+    function group_by($key, $data)
+    {
+        $result = array();
+
+        foreach ($data as $val) {
+            $result[$val->$key][] = $val;
+        }
+
+        return $result;
     }
     public function ranking($input)
     {
