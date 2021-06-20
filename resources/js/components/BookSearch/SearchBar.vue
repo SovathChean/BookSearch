@@ -2,13 +2,15 @@
   <section class="search">
     <div class="search-bar">
       <form @submit.prevent="query">
-       
+        <div class="speech-to-txt row justify-content-md-center p-3" @click="startSpeechToTxt">
+          <i class="fas fa-microphone fa-lg"></i>
+        </div>
         <div class="input-group input-group-lg mb-3">
           <input
             type="text"
             class="form-control"
             name="query"
-            v-model="fields.query"
+            v-model="runtimeTranscription_"
             placeholder="Search in our library..."
           />
           <div class="input-group-append">
@@ -17,7 +19,7 @@
             </button>
           </div>
         </div>
-              
+
       </form>
        <loading
         :active.sync="isLoading"
@@ -81,10 +83,13 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
   data() {
     return {
+      runtimeTranscription_: "",
+      lang_: "en-EN",
+
       length: 0,
       total: 0,
       books: [],
-      fields: {}, 
+      fields: {},
       isLoading: false,
       fullPage: true
     };
@@ -95,7 +100,7 @@ export default {
   methods: {
     async query() {
       this.isLoading = true;
-      
+      this.fields.query = this.runtimeTranscription_;
       const res = await axios.post("api/search", this.fields);
       this.books = res?.data;
       this.total = this.books.total;
@@ -103,7 +108,36 @@ export default {
          this.isLoading = false
       }
 
-    }
+    },
+
+    startSpeechToTxt() {
+    // initialisation of voicereco
+
+    window.SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+    const recognition = new window.SpeechRecognition();
+    recognition.lang = this.lang_;
+    recognition.interimResults = true;
+
+
+    // event current voice reco word
+    recognition.addEventListener("result", event => {
+      var text = Array.from(event.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join("");
+      this.runtimeTranscription_ = text;
+      this.fields.query = this.runtimeTranscription_;
+
+    });
+    // end of transcription
+    recognition.addEventListener("end", () => {
+      recognition.stop();
+    });
+     recognition.start();
+   },
+
+   }
   }
-};
 </script>
