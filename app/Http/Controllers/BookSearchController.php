@@ -14,11 +14,12 @@ class BookSearchController extends Controller
     public function results(Request $request)
     {
         $data = $request->validate([
-            "query" => ["required", "string", "max:255"]
+            "query" => ["required", "string", "max:255"],
+            "type" => ["required", 'integer']
         ]);
         $time_start = microtime(true);
         $input = strtolower($data['query']);
-        $books = $this->ranking($input);
+        $books = $this->ranking($input, $data['type']);
         $time_end = microtime(true);
         $total_time = ($time_end - $time_start) / 1000;
        
@@ -27,6 +28,16 @@ class BookSearchController extends Controller
             'total' => count($books),
             'time_spend' => number_format($total_time, 4)
         ]);
+        // $books = DB::table('tf_idfs')->where('term', "love")
+        //                            ->where('type', 2)
+        //                            ->get()->toArray();
+        // return response()->json($books);
+
+    }
+    public function jsonFilter()
+    {
+        $books = $this->jsonFilter();
+        return response()->json($books);
     }
 
 }

@@ -46,6 +46,28 @@ trait BookSearch
 
         return array_count_values(str_word_count($words, 1));
     }
+    public function filterJson()
+    {
+        $books = $this->readJsonFile();
+        $filterTitle = [];
+        foreach($books as $book)
+        {
+            $newBook = [];
+            if(isset($book['description']) && isset($book['authors'])
+             && isset($book['pageCount']) && isset($book['title']) && isset($book['id']))
+             {
+                $newBook['id'] = $book['id'];
+                $newBook['title'] = $book['title'];
+                $newBook['description'] = $book['description'];
+                $newBook['authors'] = array_values($book['authors'])[0];
+                $newBook['pageCount'] = $book['pageCount'];
+                
+                $filterTitle[] = $newBook;
+             }
+
+        }
+        return $filterTitle;
+    }
     public function tf($input)
     {
         $words = $this->wordCount($input);
@@ -74,16 +96,18 @@ trait BookSearch
         }
         return $idf;
     }
-    public function tf_idf($books)
+    public function tf_idf($books, $str_type)
     {
         $newBook = [];
+        $type = ["title", "description", "authors"];
         $totalFreq = $this->totalFreq($books);
         foreach ($books as $book) {
-            $words = $this->wordCount(strtolower($book['title']));
+            $words = $this->wordCount(strtolower($book[$str_type]));
             $bb = [];
             foreach ($words as $word => $val) {
                 $bb['term'] = preg_replace("/[^a-zA-Z0-9%\/\s]/", "", $word);
                 $bb['doc'] = $book['id'];
+                $bb['type'] = array_search($str_type, $type) + 1;
                 $bb['tf'] = (1 + log($val, 2));
                 if (isset($totalFreq[$word])) {
                     $bb['idf'] = log(count($totalFreq) / $totalFreq[$word], 2);
@@ -97,7 +121,7 @@ trait BookSearch
     }
     public function readJsonFile()
     {
-        $file = storage_path() . "/json/all_books.json";
+        $file = storage_path() . "/json/books.json";
         $json = @file_get_contents($file);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $json = str_replace('&quot;', "\"", $json);
@@ -105,19 +129,18 @@ trait BookSearch
 
         return $obj;
     }
-    public function cosine_similarity($input)
+    public function cosine_similarity($input, $type)
     {
         $books =  $this->readJsonFile();
         $words = $this->wordCount($input);
         $totalFreq = $this->totalFreq($books);
         $cosine_simi = [];
-        $group_word = $this->relevent_doc($words);
+        $group_word = $this->relevent_doc($words, $type);
         $total_wq =  $this->total_query_weight($words, $totalFreq);
 
         foreach ($group_word as $docs) {
             $cosine_simi[] = $this->calculate_cosine($docs, $total_wq, $totalFreq);
         }
-
 
         return $cosine_simi;
     }
@@ -127,6 +150,7 @@ trait BookSearch
         $doc_num = '';
         $upper = 0;
         $total_wt = 0;
+        $epsilon = 0.000001;
         $simi = [];
         $val = 1;
 
@@ -142,25 +166,31 @@ trait BookSearch
             $upper = $upper + ($wt * $wq);
             $doc_num = $d->doc;
         }
-        if ((sqrt($total_wt) * sqrt($total_wq)) != 0) {
-            $simi[$doc_num] = $upper / (sqrt($total_wt) * sqrt($total_wq));
-        }
+       
+            $simi[$doc_num] = $upper / ((sqrt($total_wt) * sqrt($total_wq)) + $epsilon);
+        
         return $simi;
     }
-    public function relevent_doc($words)
+    public function relevent_doc($words, $type)
     {
         $document = [];
 
         foreach ($words as $word => $val) {
-            $simi = [];
-            $docs =   DB::table('tf_idfs')->where('term', $word)
-                ->get()->toArray();
+            $docs =   $this->get_tf_idfs($word, $type);
+            
             $document = array_merge($document, $docs);
         }
+        
 
         $group_word = $this->group_by('doc', $document);
 
         return $group_word;
+    }
+    public function get_tf_idfs(string $word, int $type)
+    {
+        return DB::table('tf_idfs')->where('term', $word)
+                                   ->where('type', $type)
+                                   ->get()->toArray();
     }
     public function total_query_weight($words, $totalFreq)
     {
@@ -188,27 +218,29 @@ trait BookSearch
 
         return $result;
     }
-    public function ranking($input)
+    public function ranking($input, $type)
     {
         $books =  $this->readJsonFile();
-        $cosine_simi = $this->cosine_similarity($input);
+        $cosine_simi = $this->cosine_similarity($input, $type);
         $rankBook = [];
         foreach ($books as $book) {
-
-            // $newBook['description'] = $book['description'];
-            // $newBook['authors'] = array_values($book['authors'])[0];
-            // $newBook['publishedDate'] = $book['publishedDate'];
-            // $newBook['pageCount'] = $book['pageCount'];
-            // $newBook['categories'] = array_values($book['categories'])[0];
-            foreach ($cosine_simi as $cosine) {
-                if (isset($cosine[$book['id']])) {
-                    $newBook = [];
-                    $newBook['title'] = $book['title'];
-                    $newBook['id'] = $book['id'];
-                    $newBook['simi'] = $cosine[$book['id']];
-                    $rankBook[] = $newBook;
+            if(isset($book['description']) && isset($book['authors'])
+            && isset($book['pageCount']) && isset($book['title']) && isset($book['id']))
+            {
+                foreach ($cosine_simi as $cosine) {
+                    if (isset($cosine[$book['id']])) {
+                        $newBook = [];
+                        $newBook['title'] = $book['title'];
+                        $newBook['description'] = $book['description'];
+                        $newBook['authors'] = $book['authors'];
+                        $newBook['pageCount'] = $book['pageCount'];
+                        $newBook['id'] = $book['id'];
+                        $newBook['simi'] = $cosine[$book['id']];
+                        $rankBook[] = $newBook;
+                    }
                 }
             }
+           
         }
 
         $rankBook = $this->array_sort($rankBook, 'simi', SORT_DESC);

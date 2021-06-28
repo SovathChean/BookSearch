@@ -17,6 +17,7 @@ class TfIdf extends Migration
             $table->id();
             $table->text('term');
             $table->bigInteger('doc');
+            $table->unsignedInteger('type');
             $table->double('tf');
             $table->double('idf');
         });
