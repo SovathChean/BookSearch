@@ -3,7 +3,17 @@
     <div class="search-bar">
       <form @submit.prevent="query">
         <div class="speech-to-txt row justify-content-md-center p-3" @click="startSpeechToTxt">
-          <i class="fas fa-microphone fa-lg"></i>
+          <i class="fas fa-microphone fa-lg p-3"></i>
+
+          <transition name="slide-fade">
+            <div v-if="loader_" class="row justify-content-md-center pl-3">
+              <h2 >Listening</h2>
+              <BounceLoader :size="'45px'" :color="'#0055D4'" :loading="loader_" />
+            </div>
+
+          </transition>
+
+
         </div>
         <div class="input-group input-group-lg mb-3">
           <input
@@ -78,6 +88,7 @@
 <script>
 import axios from "axios";
 import Loading from 'vue-loading-overlay';
+import BounceLoader from '@bit/greyby.vue-spinner.bounce-loader';
     // Import stylesheet
 import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
@@ -85,6 +96,7 @@ export default {
     return {
       runtimeTranscription_: "",
       lang_: "en-EN",
+      loader_: false,
 
       length: 0,
       total: 0,
@@ -95,7 +107,8 @@ export default {
     };
   },
   components: {
-      Loading
+      Loading,
+      BounceLoader,
   },
   methods: {
     async query() {
@@ -112,7 +125,7 @@ export default {
 
     startSpeechToTxt() {
     // initialisation of voicereco
-
+    this.loader_ = true;
     window.SpeechRecognition =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
@@ -134,6 +147,7 @@ export default {
     // end of transcription
     recognition.addEventListener("end", () => {
       recognition.stop();
+      this.loader_ = false;
     });
      recognition.start();
    },
@@ -141,3 +155,17 @@ export default {
    }
   }
 </script>
+
+<style scoped>
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+</style>
