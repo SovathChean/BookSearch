@@ -16,6 +16,7 @@
             name="query"
             v-model="runtimeTranscription_"
             placeholder="Search in our library..."
+            required
           />
 
           <div class="input-group-append">

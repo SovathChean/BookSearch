@@ -28,16 +28,6 @@ class BookSearchController extends Controller
             'total' => count($books),
             'time_spend' => number_format($total_time, 4)
         ]);
-        // $books = DB::table('tf_idfs')->where('term', "love")
-        //                            ->where('type', 2)
-        //                            ->get()->toArray();
-        // return response()->json($books);
-
-    }
-    public function jsonFilter()
-    {
-        $books = $this->jsonFilter();
-        return response()->json($books);
     }
 
 }
